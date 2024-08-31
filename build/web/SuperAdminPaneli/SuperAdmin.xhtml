@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html">
+    <h:head>
+        <title>Admın Panelı</title>
+        <h:outputStylesheet  name="/adminpanelicss/reset.css" />
+        <h:outputStylesheet  name="/adminpanelicss/admin.css" />
+        <script src="https://kit.fontawesome.com/66f2961287.js" crossorigin="anonymous"></script>
+    </h:head>
+    <h:body>
+
+        <header class="header">
+            <a href="#">Filmoloji Süper Admin Paneli</a>
+        </header>
+
+
+        <h:form id="admin-form">
+            <div class="adminGiris">
+                <i class="fa-solid fa-user"></i>
+                <h:inputText id="username" value="#{superAdminBean.username}" required="true" requiredMessage="Bu alan zorunludur" styleClass="user" > </h:inputText>
+                <h:message for="username" style="color: red;font-size: 10pt;" /><br/>
+            </div>
+
+            <div class="adminSifre">
+                <i class="fa-solid fa-key"></i>
+                <h:inputSecret id="password" value="#{superAdminBean.password}" required="true" requiredMessage="Şifre girmelisiniz" styleClass="password"  />
+                <h:message for="password" style="color: red;font-size: 10pt;"/>
+            </div>
+
+            <h:commandButton value="Oturum Aç" action="#{superAdminBean.login22()}" styleClass="oturumAç" />
+        </h:form>
+
+
+    </h:body>
+</html>

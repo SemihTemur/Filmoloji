@@ -1,0 +1,63 @@
+.geriButton{
+    border: none;
+    background-color: #00628A;
+    color: #fff;
+    width: 220px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    left: 3%;
+    top: 5%;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    padding-top: 10px;
+}
+
+#kullanıcı-islemleri{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    margin-top: 150px;
+    gap: 50px;
+}
+
+.kullanıcı-container{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 380px;
+
+}
+
+.kullanıcı-container h1{
+    font-size: 24px;
+    text-align: left;
+    font-weight: bold;
+}
+
+.user{
+  height: 30px;  
+}
+
+.password{
+    margin-left: 90px;
+    height: 30px;
+}
+
+.kullanıcıEkleButton{
+    border: none;
+    background-color: #00628A;
+    color:#fff;
+    width: 220px;
+    height: 40px;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+}

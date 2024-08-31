@@ -1,0 +1,293 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>TrendeGirenKısım</title>
+        <h:outputStylesheet  name="/kullanicipanelicss/reset.css" />
+        <h:outputStylesheet library="css" name="bootstrap1.css" /> 
+        <h:outputStylesheet  name="/kullanicipanelicss/filmegirenkısım.css" />
+        <script src="https://kit.fontawesome.com/66f2961287.js" crossorigin="anonymous"></script>
+
+
+    </h:head>
+    <h:body>
+        <div class="containerr">
+         <header class="header">
+                <div class="header-left">
+                    <h:form styleClass="header-left-form">
+                        <h:commandLink action="AnaSayfa?faces-redirect=true" styleClass="navbtn" value="AnaSayfa" />
+                        <h:commandLink action="Film?faces-redirect=true" styleClass="navbtn" value="Filmler" />
+                        <h:commandLink action="Dizi?faces-redirect=true" styleClass="navbtn" value="Diziler" />
+                        <h:commandLink action="VizyondakiFilmler?faces-redirect=true" styleClass="navbtn" value="Vizyondaki Filmler" />
+                        <h:commandLink action="TrenddekiDiziler?faces-redirect=true" styleClass="navbtn" value="Trenddeki Diziler" />
+                        <h:commandLink action="Kitaplik?faces-redirect=true" styleClass="navbtn" value="Kitaplığım" />
+                        <h:commandLink action="Iletisim?faces-redirect=true" styleClass="navbtn" value="İletişim" />
+
+                    </h:form>
+                </div>
+
+                <div class="header-top">
+                    <form class="form-inline" id="form">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Film veya Dizi arayın" aria-label="Search" />
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ara</button>
+                    </form>
+                </div>
+
+                <div class="header-right">
+                    <h:form rendered="#{validUser==null}" id="header-right-form">
+                        <h:commandLink styleClass="small-button register" action="#{navigationBean.navigateTo('uyeOl')}">
+                            <i class="fas fa-user-plus"></i>
+                            <span class="nomob">Üye Ol</span>
+                        </h:commandLink>
+
+                        <h:commandLink  styleClass="small-button register" action="#{navigationBean.navigateTo('girisYap')}">
+                            <i class="fas fa-user-plus"></i>
+                            <span class="nomob">Üye Girişi</span>
+                        </h:commandLink>
+
+                    </h:form>
+
+                </div>
+
+                <h:form rendered="#{validUser!=null}">
+                    <div class="header-right-Profil">
+                        <i class="fa-regular fa-user"></i>
+                        <h:outputText value="#{kullanıcıBean.entity.name}" styleClass="kullanıcıİsmi" id="a" />
+                    </div>
+                </h:form>
+
+
+
+                <h:form rendered="#{validUser!=null}">
+                    <h:commandButton action="#{kullanıcıBean.logout()}" value="logout" styleClass="buttonsss"/>
+                </h:form>
+
+            </header>
+
+            <section class="film-kısımları"> 
+
+<!--                <div class="video">
+                    <div class="video-yazı">
+                        <h1>Fragman</h1>
+                    </div>
+
+                    <h:form styleClass="video-video">
+                        <video controls="controls">
+                            <source src="resources/videos/1.mp4" type="video/mp4"/>
+                        </video>
+                    </h:form>
+
+                </div>
+
+                <div class="film-imdb">
+                    <div class="imdb-resim">
+                        <p>5.0</p>
+                    <h:graphicImage library="images" name="imdb.png"/>
+
+                    </div>
+                    <div class="yıldızKısmı">
+                        <h:form styleClass="imdb-form">
+
+                            <i class="fa-sharp fa-solid fa-star" id="star">
+                                <h:commandButton styleClass="imdb-buttons" />
+                            </i>
+                        </h:form>
+
+                        <h:form styleClass="imdb-form">
+
+                            <i class="fa-solid fa-star" id="star">
+                                <h:commandButton styleClass="imdb-buttons" />
+                            </i>
+                        </h:form>
+
+                        <h:form styleClass="imdb-form">
+
+                            <i class="fa-solid fa-star" id="star">
+                                <h:commandButton styleClass="imdb-buttons" />
+                            </i>
+                        </h:form>
+
+                        <h:form styleClass="imdb-form">
+
+                            <i class="fa-solid fa-star" id="star">
+                                <h:commandButton styleClass="imdb-buttons" />
+                            </i>
+                        </h:form>
+
+
+                        <h:form styleClass="imdb-form">
+
+                            <i class="fa-solid fa-star" id="star">
+                                <h:commandButton styleClass="imdb-buttons" />
+                            </i>
+                        </h:form>
+
+                        <h:form styleClass="imdb-form">
+
+                            <i class="fa-solid fa-star" id="star">
+                                <h:commandButton styleClass="imdb-buttons" />
+                            </i>
+                        </h:form>
+
+                        <h:form styleClass="imdb-form">
+
+                            <i class="fa-solid fa-star" id="star">
+                                <h:commandButton styleClass="imdb-buttons" />
+                            </i>
+                        </h:form>
+
+                        <h:form styleClass="imdb-form">
+
+                            <i class="fa-solid fa-star" id="star">
+                                <h:commandButton styleClass="imdb-buttons" />
+                            </i>
+
+                        </h:form>
+
+                        <h:form styleClass="imdb-form">
+
+                            <i class="fa-solid fa-star" id="star">
+                                <h:commandButton styleClass="imdb-buttons" />
+                            </i>
+                        </h:form>
+
+                        <h:form styleClass="imdb-form">
+
+                            <i class="fa-solid fa-star" id="star">
+                                <h:commandButton styleClass="imdb-buttons" />
+                            </i>
+                        </h:form>
+
+
+
+                    </div>
+
+
+                </div>-->
+
+                <div class="film-bilgiler">
+                    <div class="film-yazı">
+                        <h1>Film Bilgileri</h1>
+
+                    </div>
+
+                    <div class="film-fotografı-yazısı">
+
+                        <div class="film-fotograf">
+                            <h:graphicImage library="images" value="/file/#{trenddekiDizilerBean.filmeGirenlist.document.fileName}"/>
+                            
+                        </div>
+
+                        <div class="fim-yazısı">
+
+                            <div class="film-baslik ortaklar">
+                                <p>Film Adı :</p>
+                                <p>#{trenddekiDizilerBean.filmeGirenlist.adi}</p>
+                            </div>
+
+                            <div class="film-konu ortaklar">
+                                <p id="filmkonu">Film Konusu :</p>
+                                <p id="lorems">#{trenddekiDizilerBean.filmeGirenlist.konusu}</p>
+                            </div>
+
+                            <div class="film-türü ortaklar">
+                                <p>Film Türü :</p>
+                                <p>#{trenddekiDizilerBean.filmeGirenlist.tur}</p>
+                            </div>
+
+                            <div class="film-yönetmen ortaklar">
+                                <p>Yönetmen :</p>
+                                <p>#{trenddekiDizilerBean.filmeGirenlist.yonetmen_adi}</p>
+                            </div>
+
+                            <div class="film-oyuncular ortaklar">
+                                <p>Oyuncular :</p>
+                                <p>#{trenddekiDizilerBean.filmeGirenlist.oyuncular}</p>
+                            </div>
+                             <div class="film-oyuncular ortaklar">
+                                <p>İmdb :</p>
+                                <p>#{trenddekiDizilerBean.filmeGirenlist.imdb.imdb}</p>
+                            </div>
+                             <div class="film-oyuncular ortaklar">
+                                <p>Platform :</p>
+                                <p>#{trenddekiDizilerBean.filmeGirenlist.platform.platform_adi}</p>
+                            </div>
+
+                        </div>
+
+                        <div class="yorumgonder">
+
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                <div class="yorumyap">
+                    <h1>Filme Yorum Yaz</h1>
+                    <h:form styleClass="formelement">
+                        <h:inputText label="Yorum yap" styleClass="inputt" />
+                        <h:commandButton value="Gönder"  styleClass="buttons" />
+                    </h:form>
+
+                </div>
+
+
+                <div class="yorumkısmı">
+                    <h1>Yorumlar</h1>
+
+                    <ui:repeat value="#" var="#">
+
+                        <div class="yorumatanKişi">
+
+
+                            <div class="yorumatan-resim">
+                                <h:graphicImage library="images" name="kullanıcı.png"/>
+                            </div>
+
+                            <div class="yorumatan-yazılar">
+                                <p> </p>
+                                <p>  </p>
+                                <div class="yorumatan-durumlar">
+                                    <div class="yorumu-beğenenler">
+
+                                        <h:form styleClass="form">
+                                            <i class="fa-solid fa-thumbs-up">
+                                                <h:commandButton styleClass="buttons2">
+                                                </h:commandButton>
+                                            </i>
+
+                                        </h:form>
+
+
+                                        <p></p>
+                                    </div>
+                                    <div class="yorumu-beğenmeyenler">
+                                        <h:form styleClass="form">
+                                            <i class="fa-solid fa-thumbs-down">
+                                                <h:commandButton styleClass="buttons2">
+                                                </h:commandButton>
+                                            </i>
+                                        </h:form>
+                                        <p></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ui:repeat>
+
+                </div>
+            </section>
+        </div>
+
+
+
+    </h:body>
+
+</html>

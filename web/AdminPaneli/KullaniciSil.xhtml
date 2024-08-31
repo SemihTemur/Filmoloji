@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Kullanıcı Silme İşlemleri</title>
+        <h:outputStylesheet library="css" name="bootstrap.css" />
+        <h:outputStylesheet  name="/adminpanelicss/reset.css" />
+        <h:outputStylesheet  name="/adminpanelicss/kullaniciSilİslemleri.css" />
+        <script src="https://kit.fontawesome.com/66f2961287.js" crossorigin="anonymous"></script>
+    </h:head>
+    <h:body>
+
+        <div id="containerr"> 
+            <h:form id="silll">
+                <h:commandLink value="Geri" action="#{navigationBean.navigateTo('KullaniciIslemleri')}" styleClass="geriButton" />
+
+                <h:dataTable value="#{kullanıcıBean.list}" var="kul"  styleClass="table table-striped">
+
+                    <h:column  styleClass="font-weight-bold">
+                        <f:facet   name="header">Kullanıcı Adı</f:facet>
+                            #{kul.name}
+                    </h:column>
+                    
+                    <h:column  styleClass="font-weight-bold">
+                        <f:facet   name="header">Email</f:facet>
+                            #{kul.email}
+                    </h:column>
+
+
+                    <h:column styleClass="font-weight-bold">
+                        <f:facet   name="header">Şifre</f:facet>
+                            #{kul.password}
+                    </h:column>
+
+                    <h:column styleClass="font-weight-bold">
+                        <f:facet   name="header">İşlem</f:facet>
+                        <h:commandButton styleClass="btn btn-danger button" value="Sil" action="#{kullanıcıBean.delete(kul)}">
+
+                        </h:commandButton>
+                    </h:column>
+
+                </h:dataTable>
+
+<!--                <div class="btn-group">
+                    <pre>Page  of </pre>
+                    <h:commandButton action="" value="geri" styleClass="btn btn-outline-dark"></h:commandButton>
+                    <h:commandButton action="" value="ileri" styleClass="btn btn-outline-dark"></h:commandButton>
+                </div>-->
+
+            </h:form>
+
+        </div>
+    </h:body>
+</html>

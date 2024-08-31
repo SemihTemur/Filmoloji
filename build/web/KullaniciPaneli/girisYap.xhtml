@@ -1,0 +1,137 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Filmler</title>
+        <h:outputStylesheet  name="/kullanicipanelicss/reset.css" />
+        <h:outputStylesheet library="css" name="bootstrap1.css" />
+        <h:outputStylesheet  name="/kullanicipanelicss/girişKısmı.css" />
+        <script src="https://kit.fontawesome.com/66f2961287.js" crossorigin="anonymous"></script>
+        <!-- Bootstrap CSS -->
+        <h:outputScript library="js" name="main.js" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+        <!-- Bootstrap JS -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+    </h:head>
+    <h:body>
+
+        <div class="girişKısmıı" id="girisSayfasi">
+
+            <div class="girişKısmıı-top"> 
+                <h1>Üye Girişi</h1>
+                <i class="fa-solid fa-xmark" id="exit"></i>
+            </div>
+
+            <div class="girişKısmıı-bottom">
+                <h:form id="form-ayarlarıı">
+                    <p>Kullanıcı Adı :</p>
+                    <h:inputText id="username" value="#{kullanıcıBean.entity.name}" styleClass="userss" >
+
+                    </h:inputText>
+
+                    <p>Password :</p>
+                    <h:inputSecret id="password" value="#{kullanıcıBean.entity.password}" styleClass="passwordd"  />
+
+                    <h:commandButton value="Giriş Yap" action="#{kullanıcıBean.login()}" styleClass="buttonsss" />
+                </h:form>
+
+
+
+            </div>
+
+            <h:panelGroup>
+
+
+
+                <h:form >
+                    <h:commandButton action="#{kullanıcıBean.logout()}" value="Logout" styleClass="buttonsss"/>
+                </h:form>
+            </h:panelGroup>
+
+        </div>
+
+
+
+        <div class="containerr">
+
+            <header class="header">
+                <div class="header-left">
+                    <h:form styleClass="header-left-form">
+                        <h:commandLink action="AnaSayfa?faces-redirect=true" styleClass="navbtn" value="AnaSayfa" />
+                        <h:commandLink action="Film?faces-redirect=true" styleClass="navbtn" value="Filmler" />
+                        <h:commandLink action="Dizi?faces-redirect=true" styleClass="navbtn" value="Diziler" />
+                        <h:commandLink action="VizyondakiFilmler?faces-redirect=true" styleClass="navbtn" value="Vizyondaki Filmler" />
+                        <h:commandLink action="TrenddekiDiziler?faces-redirect=true" styleClass="navbtn" value="Trenddeki Diziler" />
+                        <h:commandLink action="Kitaplik?faces-redirect=true" styleClass="navbtn" value="Kitaplığım" />
+                        <h:commandLink action="Iletisim?faces-redirect=true" styleClass="navbtn" value="İletişim" />
+                    </h:form>
+                </div>
+
+                <div class="header-top">
+                    <form class="form-inline" id="form">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Film veya Dizi arayın" aria-label="Search" />
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Ara</button>
+                    </form>
+                </div>
+
+                <div class="header-right">
+                    <h:form rendered="#{validUser==null}" id="header-right-form">
+
+                        <h:commandLink styleClass="small-button register" action="#{navigationBean.navigateTo('uyeOl')}">
+                            <i class="fas fa-user-plus"></i>
+                            <span class="nomob">Üye Ol</span>
+                        </h:commandLink>
+
+                        <h:commandLink  styleClass="small-button register" action="#{navigationBean.navigateTo('girisYap')}">
+                            <i class="fas fa-user-plus"></i>
+                            <span class="nomob">Üye Girişi</span>
+                        </h:commandLink>
+
+                    </h:form>
+
+
+
+                </div>
+
+
+                <div class="header-right-Profil">
+                    <i class="fa-regular fa-user"></i>
+                    <h:outputText value="#{kullanıcıBean.entity.name}" styleClass="kullanıcıİsmi" id="a" />
+
+
+                </div>
+
+            </header>
+
+            <div class="girişKısmı">
+
+                <div class="girişKısmı-top"> 
+                    <h1>Üye Girişi</h1>
+                </div>
+
+                <div class="girişKısmı-bottom">
+                    <h:form rendered="#{validUser==null}" id="form-ayarları">
+                        <p>Kullanıcı Adı :</p>
+                        <h:inputText id="username" value="#{kullanıcıBean.entity.name}" styleClass="users" >
+
+                        </h:inputText>
+
+                        <p>Password :</p>
+                        <h:inputSecret id="password" value="#{kullanıcıBean.entity.password}" styleClass="password"  />
+
+                        <h:commandButton value="Giriş Yap" action="#{kullanıcıBean.login()}" styleClass="buttonss" />
+                    </h:form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </h:body>
+
+</html>

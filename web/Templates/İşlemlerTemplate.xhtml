@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html" 
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <h:outputStylesheet  name="/adminpanelicss/reset.css" />
+        <h:outputStylesheet  name="/adminpanelicss/islemler.css" />
+        <script src="https://kit.fontawesome.com/66f2961287.js" crossorigin="anonymous"></script>
+        <title><ui:insert name="title">Varsayılan Başlık</ui:insert></title>
+    </h:head>
+    <h:body>
+
+
+        <ui:insert name="GeriKısmı">
+            <h:form>
+                <h:commandLink value="Geri" action="AdminIslemleri.xhtml" styleClass="geriButton" />
+            </h:form>
+        </ui:insert>
+
+        <h:form id="islemler">
+            <ui:insert name="İşlemlerKısmi">
+                <h:commandLink value="Film Ekle" action="FilmEkle.xhtml" styleClass="islem" />
+                <h:commandLink value="Film Sil" action="FilmSil.xhtml" styleClass="islem" />
+            </ui:insert>
+        </h:form>
+
+    </h:body>
+</html>
+

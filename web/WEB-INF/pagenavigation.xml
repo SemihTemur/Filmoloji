@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<faces-config version="4.0"
+              xmlns="https://jakarta.ee/xml/ns/jakartaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_4_0.xsd">
+    
+    
+    <navigation-rule>
+        <from-view-id>AdminPaneli/AdminIslemleri.xhtml</from-view-id>
+        <navigation-case>
+        <from-outcome>filmvediziislemleri</from-outcome>
+        <to-view-id>AdminPaneli/FilmveDiziIslemleri.xhtml</to-view-id>
+        </navigation-case>
+        
+        <from-view-id>AdminPaneli/AdminIslemleri.xhtml</from-view-id>
+        <navigation-case>
+        <from-outcome>kullaniciislemleri</from-outcome>
+        <to-view-id>AdminPaneli/KullanıcıIslemleri.xhtml</to-view-id>
+        </navigation-case>
+        
+        <from-view-id>AdminPaneli/AdminIslemleri.xhtml</from-view-id>
+        <navigation-case>
+        <from-outcome>mesaj</from-outcome>
+        <to-view-id>AdminPaneli/Mesajlar.xhtml</to-view-id>
+        </navigation-case>
+        
+        <from-view-id>AdminPaneli/AdminIslemleri.xhtml</from-view-id>
+        <navigation-case>
+        <from-outcome>yorum</from-outcome>
+        <to-view-id>AdminPaneli/Yorumlar.xhtml</to-view-id>
+        </navigation-case>
+        
+        
+        
+        
+        
+       
+       
+    </navigation-rule>
+</faces-config>

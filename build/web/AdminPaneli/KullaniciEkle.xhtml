@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Kullanıcı Ekleme İşlemleri</title>
+        <h:outputStylesheet  name="/adminpanelicss/reset.css" />
+        <h:outputStylesheet  name="/adminpanelicss/kullanıcıEkleİslemleri.css" />
+        <script src="https://kit.fontawesome.com/66f2961287.js" crossorigin="anonymous"></script>
+    </h:head>
+    <h:body>
+
+        
+        <h:form id="kullanıcı-islemleri">
+            
+            <h:commandLink value="Geri" action="#{navigationBean.navigateTo('KullaniciIslemleri')}" styleClass="geriButton" />
+            
+            <div class="kullanıcı-container">
+                <h1>Email : </h1>
+                <h:inputText  value="#{kullanıcıBean.entity.email}" styleClass="user" ></h:inputText>
+            </div>
+            
+            <div class="kullanıcı-container">
+                <h1>Kullanıcı Adı : </h1>
+                <h:inputText  value="#{kullanıcıBean.entity.name}" styleClass="user" ></h:inputText>
+            </div>
+            
+            <div class="kullanıcı-container">
+                <h1>Şifre : </h1>
+                <h:inputSecret id="password" value="#{kullanıcıBean.entity.password}" styleClass="password"  />
+            </div>
+            
+            
+           
+            <h:commandButton value="Kullanıcı Ekle" action="#{kullanıcıBean.create()}" styleClass="kullanıcıEkleButton">
+                     
+            </h:commandButton>
+            
+        </h:form>
+
+    </h:body>
+</html>

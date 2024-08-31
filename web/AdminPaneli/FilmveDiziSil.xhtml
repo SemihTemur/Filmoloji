@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/Templates/SilmeTemplate.xhtml">
+
+
+    <ui:define name="title">Film Silme İşlemleri</ui:define>
+
+    <ui:define name="geriButtonTemplate">
+        <h:commandLink value="Geri" action="FilmveDiziİslemleri.xhtml" styleClass="geriButton" />
+    </ui:define>
+
+    <ui:define name="silmeKısımlari">
+        <h:dataTable value="#{filmveDiziBean.list}" var="film"  styleClass="table table-striped">
+
+           <h:column  styleClass="font-weight-bold " style="text-align: center;">
+                <f:facet   name="header" styleClass="orta">İD</f:facet>
+                <p style="text-align: center;">#{film.id} </p>
+            </h:column>
+
+            <h:column  styleClass="font-weight-bold " style="text-align: center;">
+                <f:facet   name="header" styleClass="orta">Türü</f:facet>
+                <p style="text-align: center;">#{film.tur} </p>   
+            </h:column>
+
+            <h:column styleClass="font-weight-bold"  style="text-align: center;">
+                <f:facet   name="header">Adı</f:facet>
+                <p style="text-align: center;"> #{film.adi} </p>
+            </h:column>
+
+            <h:column styleClass="font-weight-bold"  style="text-align: center;">
+                <f:facet  name="header">Konusu</f:facet>
+                <p style="text-align: center;">#{film.konusu} </p> 
+            </h:column>
+
+            <h:column styleClass="font-weight-bold"  style="text-align: center;">
+                <f:facet   name="header">Kategorisi</f:facet>
+                <p style="text-align: center;">#{film.gönderilecekKategori}</p>
+            </h:column>
+
+            <h:column styleClass="font-weight-bold"  style="text-align: center;">
+                <f:facet   name="header">Yönetmen Adı</f:facet>
+                <p style="text-align: center;"> #{film.yonetmen_adi} </p>
+            </h:column>
+
+            <h:column styleClass="font-weight-bold"  style="text-align: center;">
+                <f:facet   name="header">Oyuncular</f:facet>
+                <p  style="text-align: center;">#{film.oyuncular}</p>
+            </h:column>
+
+            <h:column styleClass="font-weight-bold"  style="text-align: center;">
+                <f:facet   name="header">İmdb</f:facet>
+                <p  style="text-align: center;">#{film.imdb.imdb}</p>
+            </h:column>
+            
+            <h:column styleClass="font-weight-bold"  style="text-align: center;">
+                <f:facet   name="header">Platform</f:facet>
+                <p  style="text-align: center;">#{film.platform.platform_adi}</p>
+            </h:column>
+            
+            <h:column styleClass="font-weight-bold"  style="text-align: center;">
+                <f:facet   name="header">Fotograflar</f:facet>
+                <p  style="text-align: center;">#{film.document.fileName}</p>
+            </h:column>
+            
+            <h:column styleClass="font-weight-bold"  style="text-align: center;">
+                <f:facet   name="header">Vizyon ya da TrenddeMi</f:facet>
+                <p style="text-align: center;">#{film.vizyontrendd}</p>
+            </h:column>
+
+            <h:column styleClass="font-weight-bold" >
+                <f:facet   name="header">İşlem</f:facet>
+                <div class="button-flex">
+                    <h:commandButton styleClass="btn btn-danger button"  value="Sil" action="#{filmveDiziBean.delete(film)}"  />
+                    <h:commandButton styleClass="btn btn-primary button" value="Güncelle"  action="#{filmveDiziBean.navigateToGuncellePage(film.id)}"  />
+                </div>
+
+            </h:column>
+
+        </h:dataTable>
+
+      
+    </ui:define>
+
+</ui:composition>

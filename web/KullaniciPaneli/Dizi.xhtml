@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Diziler</title>
+        <h:outputStylesheet  name="/kullanicipanelicss/reset.css" />
+        <h:outputStylesheet library="css" name="bootstrap1.css" />
+        <h:outputStylesheet  name="/kullanicipanelicss/film.css" />
+        <script src="https://kit.fontawesome.com/66f2961287.js" crossorigin="anonymous"></script>
+        <!-- Bootstrap CSS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <!-- Bootstrap JS -->
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </h:head>
+    <h:body>
+        <div class="containerr">
+            <header class="header">
+                <div class="header-left">
+                    <h:form styleClass="header-left-form">
+                        <h:commandLink action="AnaSayfa?faces-redirect=true" styleClass="navbtn" value="AnaSayfa" />
+                        <h:commandLink action="Film?faces-redirect=true" styleClass="navbtn" value="Filmler" />
+                        <h:commandLink action="Dizi?faces-redirect=true" styleClass="navbtn" value="Diziler" />
+                        <h:commandLink action="VizyondakiFilmler?faces-redirect=true" styleClass="navbtn" value="Vizyondaki Filmler" />
+                        <h:commandLink action="TrenddekiDiziler?faces-redirect=true" styleClass="navbtn" value="Trenddeki Diziler" />
+                        <h:commandLink action="Kitaplik?faces-redirect=true" styleClass="navbtn" value="Kitaplığım" />
+                        <h:commandLink action="Iletisim?faces-redirect=true" styleClass="navbtn" value="İletişim" />
+                    </h:form>
+                </div>
+
+                <div class="header-top">
+                    <h:form class="form-inline" id="form">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Film veya Dizi arayın" aria-label="Search" />
+                        <h:commandButton class="btn btn-outline-success my-2 my-sm-0" value="Ara" action="#{aramaBean.ara}">
+                            <f:ajax execute="@form" render="aramaSonuclari" />
+                        </h:commandButton>
+                    </h:form>
+                </div>
+
+                <div class="header-right">
+                    <h:form rendered="#{validUser==null}" id="header-right-form">
+                        <h:commandLink styleClass="small-button register" action="#{navigationBean.navigateTo('uyeOl')}">
+                            <i class="fas fa-user-plus"></i>
+                            <span class="nomob">Üye Ol</span>
+                        </h:commandLink>
+                        <h:commandLink styleClass="small-button register" action="#{navigationBean.navigateTo('girisYap')}">
+                            <i class="fas fa-user-plus"></i>
+                            <span class="nomob">Üye Girişi</span>
+                        </h:commandLink>
+                    </h:form>
+                </div>
+
+                <h:form rendered="#{validUser!=null}">
+                    <div class="header-right-Profil">
+                        <i class="fa-regular fa-user"></i>
+                        <h:outputText value="#{kullanıcıBean.entity.name}" styleClass="kullanıcıİsmi" id="a" />
+                    </div>
+                </h:form>
+
+                <h:form rendered="#{validUser!=null}">
+                    <h:commandButton action="#{kullanıcıBean.logout()}" value="logout" styleClass="buttonsss"/>
+                </h:form>
+            </header>
+
+            <div class="container-kategori">
+                <h:form>
+                    <h:outputLabel for="browser"  styleClass="Kategoriler">Dizi Türü : </h:outputLabel>
+                    <h:selectOneMenu id="browsers" value="#{filmveDiziBean.entity.kullanicininSectigiKategori}">
+                        <f:selectItem itemValue="Hepsi" />
+                        <f:selectItem  itemValue="Macera" />
+                        <f:selectItem  itemValue="Aksiyon" />
+                        <f:selectItem  itemValue="Komedi" />
+                        <f:selectItem  itemValue="Korku" />
+                        <f:selectItem  itemValue="Bilim-Kurgu" />
+                    </h:selectOneMenu>
+                    <h:commandButton value="Seç" action="#{filmveDiziBean.listigetir}">
+                        <f:ajax execute="@form" render="diziListesi" />
+                    </h:commandButton>
+                </h:form>
+            </div>
+
+            <section class="content" id="diziListesi">
+                <h2 class="b_title" title="Yeni Diziler">
+                    Diziler
+                </h2>
+                <ui:repeat value="#{filmveDiziBean.kategoriyitutanList}" var="filmvedizi">
+                    <h:panelGroup rendered="#{filmvedizi.tur == 'Dizi'}">
+                        <div class="move_k">
+                            <div>
+                                <h:form>
+                                    <h:commandLink action="#{filmveDiziBean.setTiklananId(filmvedizi.id)}" value="Gözat">
+                                        <h:graphicImage library="images" name="#{filmvedizi.document.fileName}" alt="Film/Dizi Resmi"/>
+                                        <span class="info">
+                                            <span class="title">
+                                                <h2>Dizi'in Adı : #{filmvedizi.adi}</h2>
+                                            </span>
+                                            <span class="bottom">
+                                                <span class="box year">Türü : #{filmvedizi.tur}</span>
+                                                <span class="box type">Kategorisi: #{filmvedizi.gönderilecekKategori}</span>
+                                            </span>
+                                        </span>
+                                    </h:commandLink>
+                                </h:form>
+                            </div>
+                        </div>
+                    </h:panelGroup>
+                </ui:repeat>
+            </section>
+        </div>
+
+    </h:body>
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <h4>Hakkımızda </h4>
+                        <p> FilmolojiFilmolojiFilmolojiFilmolojiFilmoloji  </p>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Bilgi</h4>
+                        <ul class="adresler">
+                            <li><i class="fa fa-map-marker"></i>FilmolojiFilmolojiFilmolojiFilmoloji</li>
+                            <li><i class="fa fa-envelope"></i><a href="mailto:#">filmoloji@gmail.com</a></li>
+                            <li><i class="fa fa-mobile" aria-hidden="true"></i> <a href="tel:4444 3844">444 3844</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Sosyal Medya Hesaplarımız</h4>
+                        <ul class="social-icon">
+                            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="col-sm-5">
+                    <p class="copyright">&copy; Tüm Hakları <strong>Filmoloji'ye</strong> aittir.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</html>

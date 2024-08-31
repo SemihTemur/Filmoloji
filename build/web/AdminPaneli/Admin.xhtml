@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:f="jakarta.faces.core">
+    <h:head>
+        <title>Admın Panelı</title>
+        <h:outputStylesheet  name="/adminpanelicss/reset.css" />
+        <h:outputStylesheet  name="/adminpanelicss/admin.css" />
+        <script src="https://kit.fontawesome.com/66f2961287.js" crossorigin="anonymous"></script>
+    </h:head>
+    <h:body>
+
+        <header class="header">
+            <a href="#">Filmoloji Admin Paneli</a>
+        </header>
+
+        <h:form id="admin-form">
+            <div class="adminGiris">
+                <i class="fa-solid fa-user"></i>
+                <h:inputText id="username" value="#{sessionBean.entity.username}" required="true" requiredMessage="Bu alan zorunludur" styleClass="user"> 
+                    <f:ajax event="blur" render="usernameMessage"/>
+                </h:inputText>
+                <h:message id="usernameMessage" for="username" style="color: red;font-size: 10pt;" /><br/>
+            </div>
+
+            <div class="adminSifre">
+                <i class="fa-solid fa-key"></i>
+                <h:inputSecret id="password" value="#{sessionBean.entity.password}" required="true" requiredMessage="Şifre girmelisiniz" styleClass="password">
+                    <f:ajax event="blur" render="passwordMessage"/>
+                </h:inputSecret>
+                <h:message id="passwordMessage" for="password" style="color: red;font-size: 10pt;"/>
+            </div>
+
+            <h:commandButton value="Oturum Aç" action="#{sessionBean.login()}" styleClass="oturumAç">
+                <f:ajax execute="@form" render="@form"/>
+            </h:commandButton>
+        </h:form>
+
+    </h:body>
+</html>

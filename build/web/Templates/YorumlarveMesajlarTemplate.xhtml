@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <h:outputStylesheet library="css" name="bootstrap.css" />
+        <h:outputStylesheet  name="/adminpanelicss/reset.css" />
+        <h:outputStylesheet  name="/adminpanelicss/silmeislemleri.css" />
+        <script src="https://kit.fontawesome.com/66f2961287.js" crossorigin="anonymous"></script>
+        <title> <ui:insert name="title"> Silme İşlemleri </ui:insert></title>
+    </h:head>
+
+    <h:body>
+
+       <ui:insert name="geriButtonTemplates"> 
+            <ui:include src='/Templates/GeriyeGitmeTemplate.xhtml'/>
+        </ui:insert>
+
+
+        <div id="containerr"> 
+            <ui:insert name="SilmeTablosu">
+                <h:form>
+                    <h:dataTable value=" " var="film"  styleClass="table table-striped">
+                        <h:column  styleClass="font-weight-bold">
+                            <f:facet   name="header">Kullanıcı Adı</f:facet>
+                            Semih
+                        </h:column>
+                        <h:column styleClass="font-weight-bold">
+                            <f:facet   name="header">Yorumu</f:facet>
+                            1234
+                        </h:column>
+
+                        <h:column styleClass="font-weight-bold">
+                            <f:facet   name="header">İşlem</f:facet>
+                            <h:commandButton styleClass="btn btn-danger button" value="Sil" action="#"  />
+
+                        </h:column>
+
+                    </h:dataTable>
+                </h:form>
+            </ui:insert>
+        </div>
+
+
+
+    </h:body>
+
+
+</html>

@@ -1,0 +1,36 @@
+
+.geriButton{
+    border: none;
+    background-color: #00628A;
+    color: #fff;
+    width: 220px;
+    height: 50px;
+    border-radius: 5px;
+    font-size: 30px;
+    font-weight: bold;
+    position: absolute;
+    left: 3%;
+    top: 5%;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    padding-top: 10px;
+}
+
+#containerr{
+    margin: 50px;
+    margin-top: 150px;
+}
+
+#la{
+    color: red;
+}
+
+.button{
+    width: 120px;
+    height: 40px;
+}
+.islem:hover{
+    font-size: 30px;
+    text-decoration: underline;
+}

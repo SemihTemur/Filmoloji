@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/Templates/EklemeTemplate.xhtml">
+
+    <ui:define name="title">Film veya Diziyi Güncelle </ui:define>
+
+    <ui:define name="geriButtonTemplate">
+        <h:commandLink value="Geri" action="#{navigationBean.navigateTo('FilmveDiziIslemleri')}" styleClass="geriButton" />
+    </ui:define>
+
+    <ui:define name="eklemeKısımlari">
+        <h:form id="film-islemleri" enctype="multipart/form-data">
+            <div class="film-container">
+                <h1>Türü : </h1>
+                <h:selectOneMenu styleClass="browserss" value="#{filmveDiziBean.entity.tur}">
+                    <f:selectItems value="#{filmveDiziBean.entity.turarray}" var="turler" itemValue="#{turler}" />
+                </h:selectOneMenu>
+            </div>
+
+            <div class="film-container">
+                <h1> Adı : </h1>
+                <h:inputText  value="#{filmveDiziBean.entity.setAdi(adi)}" styleClass="filmEkleme ad" ></h:inputText>
+            </div>
+            <div class="film-container">
+                <h1> Konusu : </h1>
+                <h:inputTextarea styleClass="filmEkleme konu"  value="#{filmveDiziBean.entity.konusu}" rows="5" cols="30" />
+            </div>
+
+            <div class="film-container">
+                <h1> Kategorisi : </h1>
+                <h:selectManyListbox styleClass="browsersss" value="#{filmveDiziBean.entity.secilenkategoriler}" size="5">
+                    <f:selectItems value="#{filmveDiziBean.entity.kategoriler}" var="kategoriler" itemValue="#{kategoriler}" />
+                </h:selectManyListbox>
+            </div>
+
+            <div class="film-container">
+                <h1> Yönetmen Adı : </h1>
+                <h:inputText  value="#{filmveDiziBean.entity.yonetmen_adi}" styleClass="filmEkleme adi" ></h:inputText>
+            </div>
+
+            <div class="film-container">
+                <h1> Oyuncular : </h1>
+                <h:inputTextarea styleClass="filmEkleme konu"  value="#{filmveDiziBean.entity.oyuncular}" rows="5" cols="30" />
+            </div>
+            
+               <div class="film-container">
+                <h1> Platform : </h1>
+                <h:inputText  value="#{filmveDiziBean.entity.platform.platform_adi}" styleClass="filmEkleme adi" ></h:inputText>
+            </div>
+            
+               <div class="film-container">
+                <h1> Imdb : </h1>
+                <h:inputText  value="#{filmveDiziBean.entity.imdb.imdb}" styleClass="filmEkleme adi" ></h:inputText>
+            </div>
+            
+             <div class="film-container">
+                <h1> Film'in Fotoğrafi : </h1>
+                <h:inputFile value="#{filmveDiziBean.doc}" name="file"/>
+            </div>
+
+            <div class="film-container">
+                <h1>Vizyonda ya da TrenddeMi : </h1>
+                <h:selectOneMenu styleClass="browsers" value="#{filmveDiziBean.entity.seçilenVizyonTrends}">
+                    <f:selectItems value="#{filmveDiziBean.entity.vizyontrendarray}" var="vizyontrend" itemValue="#{vizyontrend}" />
+                </h:selectOneMenu>
+            </div>
+
+            <h:commandButton value="Ekle" action="#{filmveDiziBean.update}" styleClass="filmEkleButton" />
+        </h:form>
+    </ui:define>
+
+</ui:composition>

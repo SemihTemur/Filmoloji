@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="jakarta.faces.html">
+    <h:head>
+        <title>Admin İşlemleri</title>
+        <h:outputStylesheet  name="/adminpanelicss/reset.css" />
+        <h:outputStylesheet  name="/adminpanelicss/adminİslemleri.css" />
+        <script src="https://kit.fontawesome.com/66f2961287.js" crossorigin="anonymous"></script>
+    </h:head>
+    <h:body>
+
+        <h:form id="admin-islemleri">
+            <h:commandLink value="Film ve Dizi İşlemleri" action="#{navigationBean.navigateTo('FilmveDiziIslemleri')}" styleClass="islem" />
+            <h:commandLink value="Kullanıcı İşlemleri" action="#{navigationBean.navigateTo('KullaniciIslemleri')}" styleClass="islem" />
+            <h:commandLink value="Yorumlar" action="#{navigationBean.navigateTo('Yorumlar')}" styleClass="islem" />
+            <h:commandLink value="Mesajlar" action="#{navigationBean.navigateTo('Mesajlar')}" styleClass="islem" />
+        </h:form>
+
+    </h:body>
+</html>

@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="jakarta.faces.html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/Templates/İşlemlerTemplate.xhtml">
+
+    <ui:define name="title">FilmDizi İşlemleri</ui:define>
+
+    <ui:define name="İşlemlerKısmi">
+        <h:commandLink value="FilmDizi Ekle" action="#{navigationBean.navigateTo('FilmveDiziEkle')}" styleClass="islem" />
+        <h:commandLink value="FilmDizi Sil" action="#{navigationBean.navigateTo('FilmveDiziSil')}" styleClass="islem" />
+    </ui:define>
+
+</ui:composition>
+
